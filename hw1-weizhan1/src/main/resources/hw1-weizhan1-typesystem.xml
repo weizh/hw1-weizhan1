@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<typeSystemDescription xmlns="http://uima.apache.org/resourceSpecifier">
+    <name>hw1-weizhan1-typesystem</name>
+    <description>The type system for fall 13 11791 homework 1. The high level class is the QAProblem, which contains question type and answer type. Both of them consist of token lists, which are set of tokens.</description>
+    <version>1.0</version>
+    <vendor>weizhan1</vendor>
+  <types>
+    <typeDescription>
+      <name>hw1.weizhan1.QAProblem</name>
+      <description>The type of QA problems, which include question and answers. The answers are wrapped into the answer scores.</description>
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+      <features>
+      
+        <featureDescription>
+          <name>totalNumberOfAnswers</name>
+          <description>The total number of answers in this QAProblem</description>
+          <rangeTypeName>uima.cas.Integer</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>procID</name>
+          <description>The processor ID for the file loader, or file generator that created this problem.</description>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>question</name>
+          <description>The question of the QAProblem. Should be a single instance in a QAProblem.</description>
+          <rangeTypeName>hw1.weizhan1.Question</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>docID</name>
+          <description>The ID of the document that the QAProblem exists in.</description>
+          <rangeTypeName>uima.cas.Integer</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>totalNumberOfCorrectAnswers</name>
+          <description>The total Number of correct answers in this QAProblem</description>
+          <rangeTypeName>uima.cas.Integer</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>pAtN</name>
+          <description>precision @ top N answers, where N is the total number of correct answers for this problem</description>
+          <rangeTypeName>uima.cas.Double</rangeTypeName>
+        </featureDescription>
+      </features>
+    </typeDescription>
+    <typeDescription>
+      <name>hw1.weizhan1.Question</name>
+      <description>The question for the QAProblem</description>
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+      <features>
+        <featureDescription>
+          <name>tokenArray</name>
+          <description>token array of the question sentence.</description>
+          <rangeTypeName>hw1.weizhan1.Sentence</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>begin</name>
+          <description>the beginning of the question in the document.</description>
+          <rangeTypeName>uima.cas.Integer</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>end</name>
+          <description>the end of the question</description>
+          <rangeTypeName>uima.cas.Integer</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>procID</name>
+          <description>The process that generated this question</description>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+      <featureDescription>
+          <name>confidence</name>
+          <description>The confidence value for the question. Sometimes the question should be weighted, and this could be the weight.</description>
+          <rangeTypeName>uima.cas.Double</rangeTypeName>
+        </featureDescription>
+      </features>
+    </typeDescription>
+       <typeDescription>
+      <name>hw1.weizhan1.Answer</name>
+      <description>An answer for the QAProblem</description>
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+      <features>
+        <featureDescription>
+          <name>tokenArray</name>
+          <description>The token array of the answer sentence</description>
+          <rangeTypeName>hw1.weizhan1.Sentence</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>end</name>
+          <description>the end of the answer in the document</description>
+          <rangeTypeName>uima.cas.Integer</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>begin</name>
+          <description>the beginning of the answer in the document</description>
+          <rangeTypeName>uima.cas.Integer</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>procID</name>
+          <description>The process that generated this answer</description>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>confidence</name>
+          <description>the confidence value for the gold answer</description>
+          <rangeTypeName>uima.cas.Double</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>isCorrect</name>
+          <description>If the gold answer is a correct answer or not.</description>
+          <rangeTypeName>uima.cas.Boolean</rangeTypeName>
+        </featureDescription>
+      </features>
+    </typeDescription>
+    <typeDescription>
+      <name>hw1.weizhan1.Sentence</name>
+      <description>The token list which consists of tokens.</description>
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+      <features>
+        <featureDescription>
+          <name>tokens</name>
+          <description>The token list, which consists of tokens</description>
+          <rangeTypeName>uima.cas.FSArray</rangeTypeName>
+          <elementType>hw1.weizhan1.Token</elementType>
+        </featureDescription>
+        <featureDescription>
+          <name>start</name>
+          <description>the start position of the token in the document</description>
+          <rangeTypeName>uima.cas.Integer</rangeTypeName>
+        </featureDescription>
+      <featureDescription>
+          <name>end</name>
+          <description>End of the token array in the document.</description>
+          <rangeTypeName>uima.cas.Integer</rangeTypeName>
+        </featureDescription>
+      </features>
+    </typeDescription>
+    <typeDescription>
+      <name>hw1.weizhan1.Token</name>
+      <description>The token type associated with a sentence or a ngram.</description>
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+      <features>
+        <featureDescription>
+          <name>begin</name>
+          <description>the beginning tag of the token in the document.
+If the token is in a NGram, it still represents the position in the document.</description>
+          <rangeTypeName>uima.cas.Integer</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>end</name>
+          <description>the end position of the token in the document</description>
+          <rangeTypeName>uima.cas.Integer</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>procID</name>
+          <description>The ID of process that generates the token.</description>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>confidence</name>
+          <description>The confidence value of the token generated.</description>
+          <rangeTypeName>uima.cas.Double</rangeTypeName>
+        </featureDescription>
+      </features>
+    </typeDescription>
+ 
+    <typeDescription>
+      <name>hw1.weizhan1.NGram</name>
+      <description>The NGrams, could be 1,2,or 3 grams.</description>
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+      <features>
+        <featureDescription>
+          <name>begin</name>
+          <description>begin position of the ngram</description>
+          <rangeTypeName>uima.cas.Integer</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>end</name>
+          <description>The end position of the ngram</description>
+          <rangeTypeName>uima.cas.Integer</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>procID</name>
+          <description>The process that generated this ngram</description>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>confidence</name>
+          <description>The confidence value for this ngram</description>
+          <rangeTypeName>uima.cas.Double</rangeTypeName>
+        </featureDescription>
+      <featureDescription>
+          <name>elements</name>
+          <description>The array of the tokens contained in the NGram.</description>
+          <rangeTypeName>uima.cas.FSArray</rangeTypeName>
+          <elementType>hw1.weizhan1.Token</elementType>
+        </featureDescription>
+        <featureDescription>
+          <name>elementType</name>
+          <description>The type that is specified for elements.</description>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>NumberOfTokens</name>
+          <description>This is to specify if this NGram is a 1, 2, or 3 gram. 1 for unigram, 2 for bigram, and 3 for trigram.</description>
+          <rangeTypeName>uima.cas.Integer</rangeTypeName>
+        </featureDescription>
+      </features>
+    </typeDescription>
+    <typeDescription>
+      <name>hw1.weizhan1.AnswerScore</name>
+      <description>The Answer wrapped up with the scoring information and the QAProblem.Answer class.</description>
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+    <features>
+        <featureDescription>
+          <name>begin</name>
+          <description>The starting position of the answer in the doucment.</description>
+          <rangeTypeName>uima.cas.Integer</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>end</name>
+          <description>the ending position of the answer in the document.</description>
+          <rangeTypeName>uima.cas.Integer</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>procID</name>
+          <description>The processor that generates this answerScore</description>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>confidence</name>
+          <description>The confidence for the answer.
+</description>
+          <rangeTypeName>uima.cas.Double</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>score</name>
+          <description>The answer score that is generated from the processor which is denoted by the procID.</description>
+          <rangeTypeName>uima.cas.Double</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>answer</name>
+          <description>an answer token and it's gold answer label.</description>
+          <rangeTypeName>hw1.weizhan1.Answer</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>rank</name>
+          <description>The rank of the answer after ranking the answers based on the scores generated. This field is for boosting the evaluation time. For the first time of the evaluation, we have to rank the answers based on the scores, so the running time will be O(n*log(n)). Next time when we want to use a larger or smaller N, we don't want to sort the answers again, so we can use this rank field to do one-pass filtering to get the top K ( new N value) to measure P@K with only O(n) running time. If K is smaller, it will be O(N). If K is larger, it will be O(Total number of answers).</description>
+          <rangeTypeName>uima.cas.Integer</rangeTypeName>
+        </featureDescription>
+      </features>
+    </typeDescription>
+  </types>
+</typeSystemDescription>
