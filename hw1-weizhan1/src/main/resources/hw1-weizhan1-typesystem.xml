@@ -2,12 +2,12 @@
 
 <typeSystemDescription xmlns="http://uima.apache.org/resourceSpecifier">
     <name>hw1-weizhan1-typesystem</name>
-    <description>The type system for fall 13 11791 homework 1. The high level class is the QAProblem, which contains question type and answer type. Both of them consist of token lists, which are set of tokens.</description>
+    <description>The type system for fall 13 11791 homework 1. The high level class is the QAProblem, which contains question type and answer Type. Both of them consist of token lists, which are set of tokens.</description>
     <version>1.0</version>
     <vendor>weizhan1</vendor>
   <types>
     <typeDescription>
-      <name>hw1.weizhan1.QAProblem</name>
+      <name>Type.QAProblem</name>
       <description>The type of QA problems, which include question and answers. The answers are wrapped into the answer scores.</description>
       <supertypeName>uima.tcas.Annotation</supertypeName>
       <features>
@@ -25,7 +25,7 @@
         <featureDescription>
           <name>question</name>
           <description>The question of the QAProblem. Should be a single instance in a QAProblem.</description>
-          <rangeTypeName>hw1.weizhan1.Question</rangeTypeName>
+          <rangeTypeName>Type.Question</rangeTypeName>
         </featureDescription>
         <featureDescription>
           <name>docID</name>
@@ -45,14 +45,14 @@
       </features>
     </typeDescription>
     <typeDescription>
-      <name>hw1.weizhan1.Question</name>
+      <name>Type.Question</name>
       <description>The question for the QAProblem</description>
       <supertypeName>uima.tcas.Annotation</supertypeName>
       <features>
         <featureDescription>
           <name>tokenArray</name>
           <description>token array of the question sentence.</description>
-          <rangeTypeName>hw1.weizhan1.Sentence</rangeTypeName>
+          <rangeTypeName>Type.Sentence</rangeTypeName>
         </featureDescription>
         <featureDescription>
           <name>begin</name>
@@ -77,14 +77,14 @@
       </features>
     </typeDescription>
        <typeDescription>
-      <name>hw1.weizhan1.Answer</name>
+      <name>Type.Answer</name>
       <description>An answer for the QAProblem</description>
       <supertypeName>uima.tcas.Annotation</supertypeName>
       <features>
         <featureDescription>
           <name>tokenArray</name>
-          <description>The token array of the answer sentence</description>
-          <rangeTypeName>hw1.weizhan1.Sentence</rangeTypeName>
+          <description>The token array of the answer sentence.</description>
+          <rangeTypeName>Type.Sentence</rangeTypeName>
         </featureDescription>
         <featureDescription>
           <name>end</name>
@@ -93,12 +93,12 @@
         </featureDescription>
         <featureDescription>
           <name>begin</name>
-          <description>the beginning of the answer in the document</description>
+          <description>the beginning of the answer in the document.</description>
           <rangeTypeName>uima.cas.Integer</rangeTypeName>
         </featureDescription>
         <featureDescription>
           <name>procID</name>
-          <description>The process that generated this answer</description>
+          <description>The process that generated this answer.</description>
           <rangeTypeName>uima.cas.String</rangeTypeName>
         </featureDescription>
         <featureDescription>
@@ -114,7 +114,7 @@
       </features>
     </typeDescription>
     <typeDescription>
-      <name>hw1.weizhan1.Sentence</name>
+      <name>Type.Sentence</name>
       <description>The token list which consists of tokens.</description>
       <supertypeName>uima.tcas.Annotation</supertypeName>
       <features>
@@ -122,7 +122,7 @@
           <name>tokens</name>
           <description>The token list, which consists of tokens</description>
           <rangeTypeName>uima.cas.FSArray</rangeTypeName>
-          <elementType>hw1.weizhan1.Token</elementType>
+          <elementType>Type.Token</elementType>
         </featureDescription>
         <featureDescription>
           <name>start</name>
@@ -137,7 +137,7 @@
       </features>
     </typeDescription>
     <typeDescription>
-      <name>hw1.weizhan1.Token</name>
+      <name>Type.Token</name>
       <description>The token type associated with a sentence or a ngram.</description>
       <supertypeName>uima.tcas.Annotation</supertypeName>
       <features>
@@ -166,7 +166,7 @@ If the token is in a NGram, it still represents the position in the document.</d
     </typeDescription>
  
     <typeDescription>
-      <name>hw1.weizhan1.NGram</name>
+      <name>Type.NGram</name>
       <description>The NGrams, could be 1,2,or 3 grams.</description>
       <supertypeName>uima.tcas.Annotation</supertypeName>
       <features>
@@ -194,7 +194,7 @@ If the token is in a NGram, it still represents the position in the document.</d
           <name>elements</name>
           <description>The array of the tokens contained in the NGram.</description>
           <rangeTypeName>uima.cas.FSArray</rangeTypeName>
-          <elementType>hw1.weizhan1.Token</elementType>
+          <elementType>Type.Token</elementType>
         </featureDescription>
         <featureDescription>
           <name>elementType</name>
@@ -209,7 +209,7 @@ If the token is in a NGram, it still represents the position in the document.</d
       </features>
     </typeDescription>
     <typeDescription>
-      <name>hw1.weizhan1.AnswerScore</name>
+      <name>Type.AnswerScore</name>
       <description>The Answer wrapped up with the scoring information and the QAProblem.Answer class.</description>
       <supertypeName>uima.tcas.Annotation</supertypeName>
     <features>
@@ -230,8 +230,7 @@ If the token is in a NGram, it still represents the position in the document.</d
         </featureDescription>
         <featureDescription>
           <name>confidence</name>
-          <description>The confidence for the answer.
-</description>
+          <description>The confidence for the answer.</description>
           <rangeTypeName>uima.cas.Double</rangeTypeName>
         </featureDescription>
         <featureDescription>
@@ -242,7 +241,7 @@ If the token is in a NGram, it still represents the position in the document.</d
         <featureDescription>
           <name>answer</name>
           <description>an answer token and it's gold answer label.</description>
-          <rangeTypeName>hw1.weizhan1.Answer</rangeTypeName>
+          <rangeTypeName>Type.Answer</rangeTypeName>
         </featureDescription>
         <featureDescription>
           <name>rank</name>
